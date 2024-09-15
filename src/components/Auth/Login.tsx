@@ -54,8 +54,12 @@ const Login: React.FC = () => {
       });
 
       navigate("/welcome");
-    } catch (err) {
-      setError("Incorrect email or password. Please try again.");
+    } catch (err: any) {
+      if (err.response && err.response.data.message) {
+        setError(err.response.data.message);
+      } else {
+        setError("An unexpected error occurred. Please try again later.");
+      }
     }
   };
 

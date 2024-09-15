@@ -26,8 +26,12 @@ const OTPVerification: React.FC = () => {
         email: location.state.email,
       });
             navigate('/welcome');
-    } catch (err) {
-      setError('Incorrect OTP. Please try again.');
+    } catch (err: any) {
+      if (err.response && err.response.data.message) {
+        setError(err.response.data.message);
+      } else {
+        setError("An unexpected error occurred. Please try again later.");
+      }
     }
   };
 

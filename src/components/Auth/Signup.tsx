@@ -69,9 +69,12 @@ const Signup: React.FC = () => {
           lastName: formData.lastName,
         },
       });
-    } catch (err) {
-      setError("Failed to sign up. Please try again.");
-      setLoading(false);
+    } catch (err: any) {
+      if (err.response && err.response.data.message) {
+        setError(err.response.data.message);
+      } else {
+        setError("An unexpected error occurred. Please try again later.");
+      }
     }
   };
 
