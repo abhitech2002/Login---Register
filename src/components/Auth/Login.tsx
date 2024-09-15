@@ -9,6 +9,7 @@ import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import loginImage from "../../assets/signin.png";
 import styles from "../../styles/Login.module.css";
+import Loader from "../Common/Loader";
 
 const Login: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -17,6 +18,7 @@ const Login: React.FC = () => {
   });
 
   const { login } = useAuth();
+  const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState<any>({});
   const [error, setError] = useState("");
@@ -44,6 +46,8 @@ const Login: React.FC = () => {
       return;
     }
 
+    setLoading(true);
+
     try {
       const response = await api.post("/auth/login", formData);
       const { token, user } = response.data;
@@ -65,47 +69,53 @@ const Login: React.FC = () => {
 
   return (
     <div className={styles.loginContainer}>
-      <div className={styles.imageContainer}>
-        <img src={loginImage} alt="Login Illustration" loading="lazy" />
-      </div>
-      <div className={styles.formSection}>
-        <h2 className={styles.formTitle}>
-          Let us know <span className={styles.exclamation}>!</span>
-        </h2>
-        {error && <ErrorMessage message={error} />}
-        <form onSubmit={handleSubmit} className={styles.loginForm}>
-          <Input
-            type="email"
-            name="email"
-            label="Email"
-            value={formData.email}
-            onChange={handleChange}
-            error={errors.email}
-          />
-          <Input
-            type={showPassword ? "text" : "password"}
-            name="password"
-            label="Password"
-            value={formData.password}
-            onChange={handleChange}
-            error={errors.password}
-            showPasswordToggle={true}
-            togglePasswordVisibility={togglePasswordVisibility}
-            showPassword={showPassword}
-          />
-          <Button
-            type="submit"
-            label="Sign In"
-            className={styles.loginButton}
-          />
-        </form>
-        <Link
-          to="/register"
-          className={`${styles.signUpButton} ${styles.button}`}
-        >
-          <span>Sign Up</span>
-        </Link>
-      </div>
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className={styles.imageContainer}>
+            <img src={loginImage} alt="Login Illustration" loading="lazy" />
+          </div>
+          <div className={styles.formSection}>
+            <h2 className={styles.formTitle}>
+              Let us know <span className={styles.exclamation}>!</span>
+            </h2>
+            {error && <ErrorMessage message={error} />}
+            <form onSubmit={handleSubmit} className={styles.loginForm}>
+              <Input
+                type="email"
+                name="email"
+                label="Email"
+                value={formData.email}
+                onChange={handleChange}
+                error={errors.email}
+              />
+              <Input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                label="Password"
+                value={formData.password}
+                onChange={handleChange}
+                error={errors.password}
+                showPasswordToggle={true}
+                togglePasswordVisibility={togglePasswordVisibility}
+                showPassword={showPassword}
+              />
+              <Button
+                type="submit"
+                label="Sign In"
+                className={styles.loginButton}
+              />
+            </form>
+            <Link
+              to="/register"
+              className={`${styles.signUpButton} ${styles.button}`}
+            >
+              <span>Sign Up</span>
+            </Link>
+          </div>
+        </>
+      )}
     </div>
   );
 };
