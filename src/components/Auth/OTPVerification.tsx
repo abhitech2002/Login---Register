@@ -32,7 +32,7 @@ const OTPVerification: React.FC = () => {
         lastName: location.state.lastName,
         email: location.state.email,
       });
-      navigate("/welcome");
+      navigate("/welcome", { replace: true });
     } catch (err: any) {
       if (err.response && err.response.data.message) {
         setError(err.response.data.message);

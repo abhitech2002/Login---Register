@@ -57,7 +57,7 @@ const Login: React.FC = () => {
         email: formData.email,
       });
 
-      navigate("/welcome");
+      navigate("/welcome", { replace: true });
     } catch (err: any) {
       if (err.response && err.response.data.message) {
         setError(err.response.data.message);

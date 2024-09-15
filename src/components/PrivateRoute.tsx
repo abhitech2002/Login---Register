@@ -12,7 +12,7 @@ const PrivateRoute: React.FC<PrivateRouteProps> = ({ redirectPath = '/login', ch
   const { isAuthenticated, isLoading } = useAuth();
 
   if (isLoading) {
-    return <div><Loader/></div>; // Or a spinner component
+    return <div><Loader/></div>;
   }
 
   if (!isAuthenticated) {

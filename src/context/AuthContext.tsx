@@ -5,6 +5,7 @@ import React, {
   ReactNode,
   useEffect,
 } from "react";
+import Loader from "../components/Common/Loader";
 
 interface AuthContextType {
   isAuthenticated: boolean;
@@ -44,13 +45,26 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     localStorage.removeItem("email");
   };
 
+  const decodeJwt = (token: string) => {
+    try {
+      return JSON.parse(atob(token.split('.')[1]));
+    } catch (error) {
+      return null;
+    }
+ };
+
   useEffect(() => {
-    const savedToken = localStorage.getItem("authToken");
-    if (savedToken) {
+  const savedToken = localStorage.getItem("authToken");
+  if (savedToken) {
+    const expiry = decodeJwt(savedToken)?.exp;
+    if (expiry && Date.now() > expiry * 1000) {
+      logout();
+    } else {
       setToken(savedToken);
     }
-    setIsLoading(false);
-  }, []);
+  }
+  setIsLoading(false);
+}, []);
 
   const isAuthenticated = !!token;
 
@@ -58,7 +72,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
     <AuthContext.Provider
       value={{ isAuthenticated, token, login, logout, isLoading }}
     >
-      {!isLoading && children}
+      {!isLoading ? children : <Loader />}
     </AuthContext.Provider>
   );
 };
