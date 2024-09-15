@@ -1,0 +1,15 @@
+.footer {
+    background-color:  #4e0060;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  

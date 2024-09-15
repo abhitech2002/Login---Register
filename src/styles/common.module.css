@@ -1,0 +1,185 @@
+/* Common Button Styles */
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #4b2d5a;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+  background-color: #331d40;
+    transform: scale(1.02);
+}
+
+.button:active {
+  background-color: #004494;
+  transform: scale(0.98);
+}
+
+.button:disabled {
+  background-color: #c0c0c0;
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+/* Input Container */
+.inputContainer {
+  margin-bottom: 20px;
+  width: 100%; 
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.passwordToggleIcon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #6c757d;
+  transition: color 0.3s;
+}
+
+.passwordToggleIcon:hover {
+  color: #495057;
+}
+
+.inputLabel {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #7a4171;
+}
+
+.inputField {
+  width: 100%; 
+  padding: 12px 5px;
+  font-size: 16px;
+  border: none;
+  border-bottom: 2px solid #ced4da;
+  border-radius: 10px 10px 0px 0px;
+  box-shadow: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  box-sizing: border-box; 
+  background-color: transparent;
+}
+
+
+.inputField:focus {
+  border-bottom: 2px solid #7a4171;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(122, 65, 113, 0.25);
+}
+
+.inputField.error {
+  border-bottom: 2px solid #dc3545;
+}
+
+.errorText {
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.inputField::placeholder {
+  color: #6c757d;
+  opacity: 1;
+}
+
+.inputField:-ms-input-placeholder {
+  color: #6c757d; 
+}
+
+.inputField::-ms-input-placeholder {
+  color: #6c757d; 
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .inputField {
+    padding: 10px 14px; 
+    font-size: 14px;
+  }
+
+  .button {
+    padding: 8px 16px;
+    font-size: 14px; 
+  }
+}
+
+
+/* Common Error Message Styles */
+.errorMessage {
+  color: #ff0000;
+  font-size: 14px;
+  margin-top: -10px;
+  margin-bottom: 15px;
+}
+
+/* Common Container Styles */
+.container {
+  padding: 20px;
+}
+
+.centered {
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Loader Container */
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+}
+
+/* Spinner Style */
+.spinner {
+  border: 8px solid #f3f3f3; /* Light grey */
+  border-top: 8px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+/* Spinner Animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.inputContainer {
+  margin-bottom: 1rem;
+}
+
+.inputError {
+  border-color: red;
+}
+
+.errorText {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+

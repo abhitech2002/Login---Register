@@ -1,0 +1,151 @@
+.loginContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+  background-color: white;
+}
+
+.imageContainer {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageContainer img {
+  width: 80%;
+}
+
+.formSection {
+  width: 40%;
+  background-color: white;
+  padding: 40px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+.formTitle {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.exclamation {
+  color: #d12b2b;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginForm input {
+  margin-bottom: 10px;
+}
+
+.button {
+  display: inline-block;
+  width: 100%; 
+  padding: 10px 20px;
+  border-radius: 15px; 
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  box-sizing: border-box; 
+  margin-top: 20px; 
+}
+
+.loginButton {
+  background-color: #5e2a84;
+  color: white;
+  border: none;
+}
+
+.signUpButton {
+  background-color: #ffffff;
+  color: #5e2a84;
+  border: 2px solid #5e2a84;
+  text-decoration: none;
+}
+
+.signUpButton:hover {
+  background-color: #9d00ff;
+  color: whitesmoke;
+}
+
+.loginButton, 
+.signUpButton {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  display: inline-block;
+  border-radius: 15px; 
+  box-sizing: border-box;
+}
+
+.signUpButton:hover {
+  background-color: #9d00ff;
+  color: whitesmoke;
+}
+
+span {
+  font-weight: 700;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .formSection {
+    width: 50%;
+  }
+
+  .imageContainer {
+    width: 40%;
+  }
+}
+
+@media (max-width: 768px) {
+  .loginContainer {
+    flex-direction: column;
+    justify-content: center;
+    margin: 0px 30px;
+  }
+
+  .imageContainer {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .imageContainer img {
+    display: none;
+  }
+
+  .formSection {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .loginButton,
+  .signUpButton {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .formSection {
+    width: 100%;
+    padding: 15px;
+  }
+
+  .imageContainer img {
+    display: none;
+  }
+
+  .loginButton,
+  .signUpButton {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+}

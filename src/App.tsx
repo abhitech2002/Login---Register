@@ -1,26 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import OTPVerification from './components/Auth/OTPVerification';
+import WelcomePage from './pages/WelcomePage';
+import Login from './components/Auth/Login';
+import Signup from './components/Auth/Signup';
+import PrivateRoute from './components/PrivateRoute';
+import Layout from './components/Layout';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Signup />} />
+        <Route path="/otp-verification" element={<OTPVerification />} />
+        <Route element={<PrivateRoute />}>
+          <Route 
+            path="/welcome" 
+            element={
+              <Layout>
+                <WelcomePage />
+              </Layout>
+            } 
+          />
+        </Route>        
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
